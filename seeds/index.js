@@ -11,12 +11,10 @@ db.once("open", () => {
   console.log("Database connected");
 });
 
-const sample = (array) => array[Math.floor(Math.random() * Array.length)];
+const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
-  await deleteMany({});
-
-  const c = new Campground({ title: "teaca" });
+  await Campground.deleteMany({});
 
   for (let i = 0; i < 50; i++) {
     const randomCity = Math.floor(Math.random() * 1000);
@@ -31,4 +29,5 @@ const seedDB = async () => {
 
 seedDB().then(() => {
   mongoose.connection.close();
+  console.log("Database disconnected");
 });
