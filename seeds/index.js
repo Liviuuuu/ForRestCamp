@@ -20,7 +20,10 @@ const seedDB = async () => {
     const randomCity = Math.floor(Math.random() * 1000);
     const newCampground = new Campground({
       title: `${sample(descriptors)} ${sample(places)}`,
+      image: "https://source.unsplash.com/collection/483251",
       price: Math.floor(Math.random() * 100) + 1,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequuntur placeat quasi velit soluta! A ducimus possimus dolores est, perferendis voluptatibus saepe error! Dolore assumenda minus ut quisquam. Esse, odit!",
       location: `${cities[randomCity].city}, ${cities[randomCity].state}`,
     });
     await newCampground.save();
