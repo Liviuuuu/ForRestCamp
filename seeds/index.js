@@ -18,7 +18,7 @@ const seedDB = async () => {
   await Campground.deleteMany({});
   await Review.deleteMany({});
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 400; i++) {
     const randomCity = Math.floor(Math.random() * 1000);
     const newCampground = new Campground({
       author: "6632b70a8990eb514a6ffbae",
@@ -27,6 +27,10 @@ const seedDB = async () => {
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequuntur placeat quasi velit soluta! A ducimus possimus dolores est, perferendis voluptatibus saepe error! Dolore assumenda minus ut quisquam. Esse, odit!",
       location: `${cities[randomCity].city}, ${cities[randomCity].state}`,
+      geometry: {
+        type: "Point",
+        coordinates: [cities[randomCity].longitude, cities[randomCity].latitude],
+      },
       images: [
         {
           url: "https://res.cloudinary.com/ddfogyd0b/image/upload/v1714915904/ForRestCamp/lniwqoo9rt3zwxfwjpr9.jpg",
