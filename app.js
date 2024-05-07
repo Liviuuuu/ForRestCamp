@@ -21,7 +21,7 @@ const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 // const dbUrl = process.env.DB_URL;
 const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/forrestcamp";
-const secret = process.env.SECRTE || "thisshouldbeabettersecret!";
+const secret = process.env.SECRET || "thisshouldbeabettersecret!";
 const MongoStore = require("connect-mongo");
 
 mongoose.connect(dbUrl);
