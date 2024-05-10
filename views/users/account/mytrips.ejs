@@ -1,14 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("/layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My bookings and Trips</title>
-</head>
+    <body>
+        <div class="row">
+            <div class="col-md-3 offset-md-1">
+                <ul class="list-group list-group-flush">
+                    <a href="/mysettings" class="list-group-item list-group-item-action">Manage Account</a>
+                    <a href="/mytrips" class="list-group-item list-group-item-action active"
+                        aria-current="true">Bookings & Trips</a>
+                    <a href="/myreviews" class="list-group-item list-group-item-action">Reviews</a>
+                    <a href="/mywishlist" class="list-group-item list-group-item-action">Saved</a>
+                </ul>
+            </div>
 
-<body>
-    <h1>My Bookings and Trips</h1>
-</body>
-
-</html>
+            <div class="mb-3 col-md-6">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        My Settings
+                    </h1>
+                    <p class="card-text">
+                        text
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col">
+                                Column info
+                            </div>
+                            <div class="col">
+                                Column value
+                            </div>
+                            <div class="col">
+                                Column buttons
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Display name
+                    </li>
+                    <li class="list-group-item">
+                        Email address
+                    </li>
+                    <li class="list-group-item">
+                        Phone number
+                    </li>
+                    <li class="list-group-item">
+                        Date of birth
+                    </li>
+                    <li class="list-group-item">
+                        Nationality
+                    </li>
+                    <li class="list-group-item">
+                        Gender
+                    </li>
+                    <li class="list-group-item">
+                        Address
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>

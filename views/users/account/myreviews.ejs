@@ -1,14 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Reviews</title>
-</head>
+    <body>
+        <div class="row">
+            <h1 class="text-center">My Reviews</h1>
 
-<body>
-    <h1>My Reviews</h1>
-</body>
+            <div class="col-md-3 offset-md-1">
+                <ul class="list-group list-group-flush">
+                    <a href="/mysettings" class="list-group-item list-group-item-action">Manage Account</a>
+                    <a href="/mytrips" class="list-group-item list-group-item-action">Bookings & Trips</a>
+                    <a href="/myreviews" class="list-group-item list-group-item-action active"
+                        aria-current="true">Reviews</a>
+                    <a href="/mywishlist" class="list-group-item list-group-item-action">Saved</a>
+                </ul>
+            </div>
 
-</html>
+            <div class="col-md-6 ">
+                <form action="/campgrounds" method="POST" novalidate class="needs-validation"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" name="campground[title]" id="title" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success">Add Campground</button>
+                    </div>
+
+                </form>
+                <footer><a href="/campgrounds">Back</a></footer>
+            </div>
+        </div>
+    </body>

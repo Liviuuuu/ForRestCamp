@@ -1,14 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("/layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Settings</title>
-</head>
+    <body>
+        <div class="row">
 
-<body>
-    <h1>My Settings</h1>
-</body>
 
-</html>
+            <div class="col-md-3 offset-md-1">
+                <ul class="list-group list-group-flush">
+                    <a href="/mysettings" class="list-group-item list-group-item-action active"
+                        aria-current="true">Manage Account</a>
+                    <a href="/mytrips" class="list-group-item list-group-item-action">Bookings & Trips</a>
+                    <a href="/myreviews" class="list-group-item list-group-item-action">Reviews</a>
+                    <a href="/mywishlist" class="list-group-item list-group-item-action">Saved</a>
+                </ul>
+            </div>
+
+            <div class="card mb-3 col-md-6">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        My Settings
+                    </h1>
+                    <p class="card-text">
+                        text
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="row">
+                        <div class="col">
+                            Column info
+                        </div>
+                        <div class="col">
+                            Column value
+                        </div>
+                        <div class="col">
+                            Column buttons
+                        </div>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                        Display name
+                    </li>
+                    <li class="list-group-item">
+                        Email address
+                    </li>
+                    <li class="list-group-item">
+                        Phone number
+                    </li>
+                    <li class="list-group-item">
+                        Date of birth
+                    </li>
+                    <li class="list-group-item">
+                        Nationality
+                    </li>
+                    <li class="list-group-item">
+                        Gender
+                    </li>
+                    <li class="list-group-item">
+                        Address
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div class="col-md-6 ">
+                <h1 class="text-left">My Settings</h1>
+                <form action="/campgrounds" method="POST" novalidate class="needs-validation"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" name="campground[title]" id="title" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success">Add Campground</button>
+                    </div>
+
+                </form>
+                <footer><a href="/campgrounds">Back</a></footer>
+            </div> -->
+        </div>
+    </body>
