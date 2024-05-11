@@ -2,8 +2,6 @@
 
     <body>
         <div class="row">
-            <h1 class="text-center">Saved</h1>
-
             <div class="col-md-3 offset-md-1">
                 <ul class="list-group list-group-flush">
                     <a href="/mysettings" class="list-group-item list-group-item-action">Manage Account</a>
@@ -14,22 +12,15 @@
                 </ul>
             </div>
 
-            <div class="col-md-6 ">
-                <form action="/campgrounds" method="POST" novalidate class="needs-validation"
-                    enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label class="form-label" for="title">Title</label>
-                        <input class="form-control" type="text" name="campground[title]" id="title" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-success">Add Campground</button>
-                    </div>
-
-                </form>
-                <footer><a href="/campgrounds">Back</a></footer>
+            <div class="card mb-3 col-md-6">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        Saved
+                    </h1>
+                    <p class="card-text">
+                        Small description
+                    </p>
+                </div>
             </div>
         </div>
     </body>

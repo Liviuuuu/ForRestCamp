@@ -22,6 +22,7 @@ router
 router.get("/logout", users.logout);
 
 router.get("/mysettings", (req, res) => {
+  // console.log(currentUser);
   res.render("users/account/mysettings");
 });
 
@@ -29,9 +30,7 @@ router.get("/mytrips", (req, res) => {
   res.render("users/account/mytrips");
 });
 
-router.get("/myreviews", (req, res) => {
-  res.render("users/account/myreviews");
-});
+router.get("/myreviews", catchAsync(users.renderMyReviews));
 
 router.get("/mywishlist", (req, res) => {
   res.render("users/account/mywishlist");

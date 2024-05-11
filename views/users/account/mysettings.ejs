@@ -2,8 +2,6 @@
 
     <body>
         <div class="row">
-
-
             <div class="col-md-3 offset-md-1">
                 <ul class="list-group list-group-flush">
                     <a href="/mysettings" class="list-group-item list-group-item-action active"
@@ -20,43 +18,217 @@
                         My Settings
                     </h1>
                     <p class="card-text">
-                        text
+                        Small description
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <div class="row">
-                        <div class="col">
-                            Column info
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Name</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
                         </div>
-                        <div class="col">
-                            Column value
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col">
-                            Column buttons
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Display Name</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        Display name
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Email address</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        Email address
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Phone number</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        Phone number
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Date of birth</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        Date of birth
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Nationality</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        Nationality
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Gender</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        Gender
-                    </li>
-                    <li class="list-group-item">
-                        Address
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Address</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser._id %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 collapse" id="collapseExample">
+                            <form action="#" method="">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                        aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                 </ul>
             </div>

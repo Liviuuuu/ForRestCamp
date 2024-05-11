@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Review = require("../models/review");
 
 module.exports.renderRegister = (req, res) => {
   res.render("users/register");
@@ -39,4 +40,14 @@ module.exports.logout = (req, res) => {
     req.flash("success", "Goodbye!");
     res.redirect("/campgrounds");
   });
+};
+
+module.exports.renderMyReviews = async (req, res) => {
+  const reviews = await Review.find({author: req.user._id}).populate("campground", "title");
+  res.render("users/account/myreviews", { reviews });
+};
+
+module.exports.deleteMyReview = async (req, res) => {
+  const reviews = await Review.find({author: req.user._id}).populate("campground", "title");
+  res.render("users/account/myreviews", { reviews });
 };
