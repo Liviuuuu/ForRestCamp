@@ -41,7 +41,9 @@ const CampgroundSchema = new Schema(
         ref: "Review",
       },
     ],
-  }, opts);
+  },
+  opts
+);
 
 CampgroundSchema.virtual("properties.popUpMarkup").get(function () {
   return `<strong><a href="/campgrounds/${this._id}">${this.title}</a><strong>
@@ -50,7 +52,7 @@ CampgroundSchema.virtual("properties.popUpMarkup").get(function () {
 
 CampgroundSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
-    await Review.deleteMany({
+    const result = await Review.deleteMany({
       _id: {
         $in: doc.reviews,
       },
