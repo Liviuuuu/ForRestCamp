@@ -24,27 +24,34 @@
                         <a class="nav-link" href="/register">Register</a>
                     </li>
                     <% } else {%>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Username
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/mysettings">Manage Account</a></li>
-                                <li><a class="dropdown-item" href="/mytrips">Bookings & Trips</a></li>
-                                <li><a class="dropdown-item" href="/myreviews">Reviews</a></li>
-                                <li><a class="dropdown-item" href="/mywishlist">Saved</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
+                        <% if(currentUser.isAdmin) {%>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Admin</a>
+                            </li>
+                            <% } %>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <%= currentUser.username %>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="/mysettings">Manage Account</a></li>
+                                        <li><a class="dropdown-item" href="/mytrips">Bookings & Trips</a></li>
+                                        <li><a class="dropdown-item" href="/myreviews">Reviews</a></li>
+                                        <li><a class="dropdown-item" href="/mywishlist">Saved</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <!-- <% if(currentUser.isAdmin) {%>
+                                    <li><a class="dropdown-item" href="/admin/index">Admin things</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <% } %> -->
+                                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                    </ul>
                                 </li>
-                                <li><a class="dropdown-item disabled" href="#">Admin things</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="nav-link" href="/logout">Logout</a></li>
-                            </ul>
-                        </li>
-                        <% } %>
+                                <% } %>
             </ul>
         </div>
 

@@ -36,4 +36,9 @@ router.get("/mywishlist", (req, res) => {
   res.render("users/account/mywishlist");
 });
 
+//Admin
+router.get("/admin", (req, res) => {
+  res.render("users/admin/index");
+});
+
 module.exports = router;
