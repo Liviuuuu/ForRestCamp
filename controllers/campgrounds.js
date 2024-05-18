@@ -1,5 +1,7 @@
 const Campground = require("../models/campground");
 
+const Fuse = require("fuse.js");
+
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocodeService = mbxGeocoding({ accessToken: mapBoxToken });
@@ -7,8 +9,23 @@ const geocodeService = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
-  const campgrounds = await Campground.find({});
-  res.render("campgrounds/index", { campgrounds });
+  if (req.query.search) {
+    const campgroundsList = await Campground.find({});
+
+    const fuse = new Fuse(campgroundsList, {
+      keys: ["title"],
+    });
+
+    // const searchResults = fuse.search(req.query.search);
+    // const campgrounds = searchResults.map((searchResult) => searchResult.item);
+    const campgrounds = fuse.search(req.query.search).map((searchResult) => searchResult.item);
+
+    res.render("campgrounds/index", { campgrounds });
+  } else {
+    const campgrounds = await Campground.find({});
+    res.render("campgrounds/index", { campgrounds });
+    console.log(campgrounds);
+  }
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -75,3 +92,7 @@ module.exports.deleteCampground = async (req, res) => {
   req.flash("success", "Successfully deleted campground!");
   res.redirect("/campgrounds");
 };
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}

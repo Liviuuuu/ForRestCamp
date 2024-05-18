@@ -1,5 +1,11 @@
 <% layout("layouts/boilerplate") %>
     <div id="cluster-map"></div>
+    <form action="/campgrounds" method="GET" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="search" placeholder="Campground search..." class="form-control">
+            <button class="btn btn-outline-success" value="Search" type="submit">Search</button> 
+        </div>
+    </form>
     <h1>All Campgrounds</h1>
     <div><a href="/campgrounds/new">Add Campground</a></div>
     <ul>
