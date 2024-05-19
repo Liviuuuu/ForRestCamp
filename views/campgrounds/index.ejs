@@ -3,45 +3,169 @@
     <form action="/campgrounds" method="GET" class="form-inline">
         <div class="form-group">
             <input type="text" name="search" placeholder="Campground search..." class="form-control">
-            <button class="btn btn-outline-success" value="Search" type="submit">Search</button> 
+            <button class="btn btn-outline-success" value="Search" type="submit">Search</button>
         </div>
     </form>
-    <h1>All Campgrounds</h1>
-    <div><a href="/campgrounds/new">Add Campground</a></div>
-    <ul>
-        <% for (let campground of campgrounds) {%>
-            <div class="card mb-3">
-                <div class="row">
-                    <div class="col-md-4">
-                        <% if(campground.images.length) {%>
-                            <img crossorigin="anonymous" class="img-fluid" src="<%= campground.images[0].url %>" alt="">
-                            <% } else { %>
-                                <img crossorigin="anonymous" class="img-fluid"
-                                    src="https://res.cloudinary.com/ddfogyd0b/image/upload/v1714982216/ForRestCamp/No_Image_Available_qyc8nl.jpg"
-                                    alt="">
-                                <% } %>
+
+    <div class="row">
+        <h1>All Campgrounds</h1>
+        <div><a href="/campgrounds/new">Add Campground</a></div>
+
+        <div class="col-2">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Filter by:</strong>
+                </div>
+
+                <form action="/campgrounds" method="GET">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Price</strong>
+                            <label for="customRange2" class="form-label">Range:</label>
+                            <input type="range" name="price" class="form-range" min="0" max="500" step="10" id="customRange2">
+                        </li>
+                        <li class="list-group-item"><strong>Property Type</strong>
+                            <div class="form-check">
+                                <input class="form-check-input" name="testinput"type="checkbox" value="test" id="flexCheckDefault22" >
+                                <label class="form-check-label" for="flexCheckDefault22">
+                                    Camping
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Cabana
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Glamping
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Landowner campsites
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    cabanute resort
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item"><strong>Review Score</strong>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    4+
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    3+
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    2+
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    1+
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item"><strong>Facilities</strong>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Parking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Free Wifi
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Swimming pool
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Pet friendly
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    24h Check in
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Private bathroom
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <div class="d-grid col-10 mx-auto mb-2">
+                        <button class="btn btn-outline-success btn-sm" value="Filter" type="submit">Apply filters</button>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= campground.title %>
-                            </h5>
-                            <p class="card-text">
-                                <%= campground.description %>
-                            </p>
-                            <p class="card-text">
-                                <small class="text-body-secondary">
-                                    <%= campground.location %>
-                                </small>
-                            </p>
-                            <a href="/campgrounds/<%= campground.id %>" class="btn btn-primary">View <%=
-                                    campground.title %></a>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-10">
+            <ul class="ps-0">
+                <% for (let campground of campgrounds) {%>
+                    <div class="card mb-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <% if(campground.images.length) {%>
+                                    <img crossorigin="anonymous" class="img-fluid" src="<%= campground.images[0].url %>"
+                                        alt="">
+                                    <% } else { %>
+                                        <img crossorigin="anonymous" class="img-fluid"
+                                            src="https://res.cloudinary.com/ddfogyd0b/image/upload/v1714982216/ForRestCamp/No_Image_Available_qyc8nl.jpg"
+                                            alt="">
+                                        <% } %>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= campground.title %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= campground.description %>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">
+                                            <%= campground.location %>
+                                        </small>
+                                    </p>
+                                    <a href="/campgrounds/<%= campground.id %>" class="btn btn-primary">View <%=
+                                            campground.title %></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <% } %>
-    </ul>
+                    <% } %>
+            </ul>
+        </div>
+    </div>
     <script>
         const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
         const campgrounds = { features: <%- JSON.stringify(campgrounds) %> };
