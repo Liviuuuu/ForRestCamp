@@ -17,6 +17,70 @@ const CampgroundSchema = new Schema(
   {
     title: String,
     images: [ImageSchema],
+    price: Number,
+    description: String,
+    location: String,
+    overallRating: Number,
+    propertyType: {
+      type: String,
+      enum: ["Camping", "Glamping", "Chalet", "Landowner Campsites"],
+    },
+    facilities: {
+      type: [String],
+      enum: [
+        "Private Bathroom",
+        "Air conditioning",
+        "Kitchen",
+        "Refrigerator",
+        "Shower",
+        "TV",
+        "Towels",
+        "Coffe/Tea maker",
+      ],
+    },
+    roomFacilities: {
+      type: [String],
+      enum: [
+        "Free Parking",
+        "WiFi",
+        "Pet friendly",
+        "24h Check In",
+        "Swimming pool",
+        "Non-smoking room",
+        "Electric vehicle chargin station",
+        "Hot Tub",
+      ],
+    },
+    funThingsToDo: {
+      type: [String],
+      enum: ["Bike rental", "Walking Tours"],
+    },
+    rules: {
+      checkIn: {
+        type: String,
+      },
+      checkOut: {
+        type: String,
+      },
+      paymentMethods: {
+        type: String,
+      },
+      quietHours: {
+        type: String,
+      },
+    },
+
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
+
     geometry: {
       type: {
         type: String,
@@ -28,19 +92,6 @@ const CampgroundSchema = new Schema(
         required: true,
       },
     },
-    price: Number,
-    description: String,
-    location: String,
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-    reviews: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
   },
   opts
 );
