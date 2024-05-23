@@ -9,7 +9,7 @@ const geocodeService = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
-  console.log(req.query)
+  console.log(req.query);
   if (req.query.search) {
     const campgroundsList = await Campground.find({});
 
@@ -23,7 +23,7 @@ module.exports.index = async (req, res) => {
 
     res.render("campgrounds/index", { campgrounds });
   } else {
-    const campgrounds = await Campground.find({price: { $gte: req.query.price}});
+    const campgrounds = await Campground.find({ price: { $gte: req.query.price } });
     res.render("campgrounds/index", { campgrounds });
     // console.log(campgrounds);
   }
@@ -41,11 +41,12 @@ module.exports.createCampground = async (req, res, next) => {
     })
     .send();
   const campground = new Campground(req.body.campground);
+  // console.log(req.body.campground);
   campground.geometry = geoData.body.features[0].geometry;
   campground.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
   campground.author = req.user._id;
   await campground.save();
-  console.log(campground);
+  // console.log(campground);
   req.flash("success", "Successfully made a new campground!");
   res.redirect(`/campgrounds/${campground._id}`);
 };

@@ -20,42 +20,47 @@ const CampgroundSchema = new Schema(
     price: Number,
     description: String,
     location: String,
-    overallRating: Number,
+    overallRating: Number, // de calculat cand adaugi reviews
     propertyType: {
       type: String,
       enum: ["Camping", "Glamping", "Chalet", "Landowner Campsites"],
     },
     facilities: {
-      type: [String],
-      enum: [
-        "Private Bathroom",
-        "Air conditioning",
-        "Kitchen",
-        "Refrigerator",
-        "Shower",
-        "TV",
-        "Towels",
-        "Coffe/Tea maker",
-      ],
+      parking: Boolean,
+      wifi: Boolean,
+      petFriendly: Boolean,
+      nonStopCheckIn: Boolean,
+      nonSmokingRooms: Boolean,
+      EVChargingStation: Boolean,
+      kitchen: Boolean,
+      barbecue: Boolean,
+      campfire: Boolean,
+      swimmingPool: Boolean,
+      hotTub: Boolean,
+      coffeTeaMaker: Boolean,
     },
     roomFacilities: {
-      type: [String],
-      enum: [
-        "Free Parking",
-        "WiFi",
-        "Pet friendly",
-        "24h Check In",
-        "Swimming pool",
-        "Non-smoking room",
-        "Electric vehicle chargin station",
-        "Hot Tub",
-      ],
+      privateBathroom: Boolean,
+      refrigerator: Boolean,
+      TV: Boolean,
+      airConditioning: Boolean,
+      balcony: Boolean,
+      towels: Boolean,
     },
     funThingsToDo: {
-      type: [String],
-      enum: ["Bike rental", "Walking Tours"],
+      biking: Boolean,
+      ATV: Boolean,
+      motocross: Boolean,
+      fishing: Boolean,
+      canoeing: Boolean,
+      hiking: Boolean,
+      equestrian: Boolean,
+      climbing: Boolean,
+      rafting: Boolean,
+      walkingTours: Boolean,
     },
     rules: {
+      //de adaugat
       checkIn: {
         type: String,
       },
@@ -69,18 +74,6 @@ const CampgroundSchema = new Schema(
         type: String,
       },
     },
-
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-    reviews: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
-
     geometry: {
       type: {
         type: String,
@@ -92,6 +85,17 @@ const CampgroundSchema = new Schema(
         required: true,
       },
     },
+
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
   },
   opts
 );

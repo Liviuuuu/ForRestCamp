@@ -4,6 +4,9 @@
         <div class="col-md-6 offset-md-3">
             <form action="/campgrounds" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
                 <div class="mb-3">
+                    <h2><span class="badge rounded-pill text-bg-info">General</span></h2>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="title">Title</label>
                     <input class="form-control" type="text" name="campground[title]" id="title" required>
                     <div class="valid-feedback">
@@ -43,6 +46,236 @@
                         Looks good!
                     </div> -->
                 </div>
+
+
+
+
+
+
+                <div class="mb-3">
+                    <label class="form-label" for="propertyType">Property Type</label>
+                    <select class="form-select" name="campground[propertyType]" id="propertyType">
+                        <!-- <option selected>Choose...</option> -->
+                        <option value="Camping">Camping</option>
+                        <option value="Glamping">Glamping</option>
+                        <option value="Chalet">Chalet</option>
+                        <option value="Landowner Campsites">Landowner Campsites</option>
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <h2><span class="badge rounded-pill text-bg-info">Facilities</span></h2>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][parking]" value="true" id="parking">
+                            <label class="form-check-label" for="parking">
+                                Parking
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][wifi]" value="true" id="wifi">
+                            <label class="form-check-label" for="wifi">
+                                WiFi
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][petFriendly]" value="true" id="petFriendly">
+                            <label class="form-check-label" for="petFriendly">
+                                Pet Friendly
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][nonStopCheckIn]" value="true" id="nonStopCheckIn">
+                            <label class="form-check-label" for="nonStopCheckIn">
+                                24h Check In
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][nonSmokingRooms]" value="true" id="nonSmokingRooms">
+                            <label class="form-check-label" for="nonSmokingRooms">
+                                Non-Smoking Rooms
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][EVChargingStation]" value="true" id="EVChargingStation">
+                            <label class="form-check-label" for="EVChargingStation">
+                                EV Charging Station
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][kitchen]" value="true" id="kitchen">
+                            <label class="form-check-label" for="kitchen">
+                                Kitchen
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][barbecue]" value="true" id="barbecue">
+                            <label class="form-check-label" for="barbecue">
+                                Barbecue
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][campfire]" value="true" id="campfire">
+                            <label class="form-check-label" for="campfire">
+                                Campfire
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][swimmingPool]" value="true" id="swimmingPool">
+                            <label class="form-check-label" for="swimmingPool">
+                                Swimming Pool
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][hotTub]" value="true" id="hotTub">
+                            <label class="form-check-label" for="hotTub">
+                                Hot Tub
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[facilities][coffeTeaMaker]" value="true" id="coffeTeaMaker">
+                            <label class="form-check-label" for="coffeTeaMaker">
+                                Coffe/Tea Maker
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <h2><span class="badge rounded-pill text-bg-info">Room Facilities</span></h2>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[roomFacilities][privateBathroom]" value="true" id="privateBathroom">
+                            <label class="form-check-label" for="privateBathroom">
+                                Private Bathroom
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[roomFacilities][refrigerator]" value="true" id="refrigerator">
+                            <label class="form-check-label" for="refrigerator">
+                                Refrigerator
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[roomFacilities][TV]" value="true" id="TV">
+                            <label class="form-check-label" for="TV">
+                                TV
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[roomFacilities][airConditioning]" value="true" id="airConditioning">
+                            <label class="form-check-label" for="airConditioning">
+                                Air Conditioning
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[roomFacilities][balcony]" value="true" id="balcony">
+                            <label class="form-check-label" for="balcony">
+                                Balcony
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[roomFacilities][towels]" value="true" id="towels">
+                            <label class="form-check-label" for="towels">
+                                Towels
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <h2><span class="badge rounded-pill text-bg-info">Fun Things To Do</span></h2>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][biking]" value="true" id="biking">
+                            <label class="form-check-label" for="biking">
+                                Biking
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][ATV]" value="true" id="ATV">
+                            <label class="form-check-label" for="ATV">
+                                ATV
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][motocross]" value="true" id="motocross">
+                            <label class="form-check-label" for="motocross">
+                                Motocross
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][fishing]" value="true" id="fishing">
+                            <label class="form-check-label" for="fishing">
+                                Fishing
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][canoeing]" value="true" id="canoeing">
+                            <label class="form-check-label" for="canoeing">
+                                Canoeing
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][hiking]" value="true" id="hiking">
+                            <label class="form-check-label" for="hiking">
+                                Hiking
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][equestrian]" value="true" id="equestrian">
+                            <label class="form-check-label" for="equestrian">
+                                Equestrian
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][climbing]" value="true" id="climbing">
+                            <label class="form-check-label" for="climbing">
+                                Climbing
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][rafting]" value="true" id="rafting">
+                            <label class="form-check-label" for="rafting">
+                                Rafting
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="campground[funThingsToDo][walkingTours]" value="true" id="walkingTours">
+                            <label class="form-check-label" for="walkingTours">
+                                Walking Tours
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <h2><span class="badge rounded-pill text-bg-info">Rules</span></h2>
+                </div>
+
+
+
+
+
+
+
                 <div class="mb-3">
                     <button class="btn btn-success">Add Campground</button>
                 </div>
