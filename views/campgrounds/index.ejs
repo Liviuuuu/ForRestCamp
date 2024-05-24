@@ -19,43 +19,48 @@
 
                 <form action="/campgrounds" method="GET">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Price</strong>
-                            <label for="customRange2" class="form-label">Range:</label>
-                            <input type="range" name="price" class="form-range" min="0" max="500" step="10" id="customRange2">
+                        <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Price</strong>
+                            <input type="number" class="form-control form-control-sm mb-2" name="price[gte]"
+                                placeholder="Min" min="0" max="599" 
+                                value="<%= Object.keys(queryStr).length !== 0 && queryStr.price.gte > 0 ? queryStr.price.gte : "0" %>">
+                            <input type="number" class="form-control form-control-sm" name="price[lte]"
+                                placeholder="Max" min="1" max="600"
+                                value="<%= Object.keys(queryStr).length !== 0 && queryStr.price.lte < 600 ? queryStr.price.lte : "600" %>">
                         </li>
-                        <li class="list-group-item"><strong>Property Type</strong>
+
+                        <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Property
+                                Type</strong>
                             <div class="form-check">
-                                <input class="form-check-input" name="testinput"type="checkbox" value="test" id="flexCheckDefault22" >
-                                <label class="form-check-label" for="flexCheckDefault22">
+                                <input class="form-check-input" type="checkbox" name="propertyType" value="Camping"
+                                    id="camping" <%= Object.keys(queryStr).length !== 0 && queryStr.propertyType !== undefined && queryStr.propertyType.includes("Camping") ? "checked" : "" %>>
+                                <label class="form-check-label" for="camping">
                                     Camping
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Cabana
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="propertyType" value="Glamping"
+                                    id="glamping" <%= Object.keys(queryStr).length !== 0 && queryStr.propertyType !== undefined && queryStr.propertyType.includes("Glamping") ? "checked" : "" %>>
+                                <label class="form-check-label" for="glamping">
                                     Glamping
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Landowner campsites
+                                <input class="form-check-input" type="checkbox" name="propertyType" value="Chalet"
+                                    id="chalet" <%= Object.keys(queryStr).length !== 0 && queryStr.propertyType !== undefined && queryStr.propertyType.includes("Chalet") ? "checked" : "" %>>
+                                <label class="form-check-label" for="chalet">
+                                    Chalet
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    cabanute resort
+                                <input class="form-check-input" type="checkbox" name="propertyType"
+                                    value="Landowner Campsites" id="landownerCampsites" <%= Object.keys(queryStr).length !== 0 && queryStr.propertyType !== undefined && queryStr.propertyType.includes("Landowner Campsites") ? "checked" : "" %>>
+                                <label class="form-check-label" for="landownerCampsites">
+                                    Landowner Campsites
                                 </label>
                             </div>
                         </li>
-                        <li class="list-group-item"><strong>Review Score</strong>
+                        <li class="list-group-item"><strong style="background-color: rgb(255, 255, 69);">Review
+                                Score</strong>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
@@ -81,41 +86,210 @@
                                 </label>
                             </div>
                         </li>
-                        <li class="list-group-item"><strong>Facilities</strong>
+                        <li class="list-group-item"><strong
+                                style="background-color: rgb(20, 169, 1);">Facilities</strong>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="parking" value="true" id="parking"
+                                    <%= Object.keys(queryStr).length !== 0 && queryStr.parking === "true" ? "checked" : "" %>>
+
+                                <label class="form-check-label" for="parking">
                                     Parking
                                 </label>
                             </div>
+                        
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Free Wifi
+                                <input class="form-check-input" type="checkbox" name="wifi" value="true" id="wifi"
+                                    <%=queryStr.length !==0 && queryStr.wifi==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="wifi">
+                                    WiFi
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Swimming pool
+                                <input class="form-check-input" type="checkbox" name="petFriendly" value="true"
+                                    id="petFriendly" <%=queryStr.length !==0 && queryStr.petFriendly==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="petFriendly">
+                                    Pet Friendly
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Pet friendly
+                                <input class="form-check-input" type="checkbox" name="nonStopCheckIn" value="true"
+                                    id="nonStopCheckIn" <%=queryStr.length !==0 && queryStr.nonStopCheckIn==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="nonStopCheckIn">
+                                    24h Check In
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    24h Check in
+                                <input class="form-check-input" type="checkbox" name="nonSmokingRooms" value="true"
+                                    id="nonSmokingRooms" <%=queryStr.length !==0 && queryStr.nonSmokingRooms==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="nonSmokingRooms">
+                                    Non-Smoking Rooms
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Private bathroom
+                                <input class="form-check-input" type="checkbox" name="EVChargingStation" value="true"
+                                    id="EVChargingStation" <%=queryStr.length !==0 && queryStr.EVChargingStation==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="EVChargingStation">
+                                    EV Charging Station
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="kitchen" value="true" id="kitchen"
+                                    <%=queryStr.length !==0 && queryStr.kitchen==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="kitchen">
+                                    Kitchen
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="barbecue" value="true"
+                                    id="barbecue" <%=queryStr.length !==0 && queryStr.barbecue==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="barbecue">
+                                    Barbecue
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="campfire" value="true"
+                                    id="campfire" <%=queryStr.length !==0 && queryStr.campfire==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="campfire">
+                                    Campfire
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="swimmingPool" value="true"
+                                    id="swimmingPool" <%=queryStr.length !==0 && queryStr.swimmingPool==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="swimmingPool">
+                                    Swimming Pool
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="hotTub" value="true" id="hotTub"
+                                    <%=queryStr.length !==0 && queryStr.hotTub==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="hotTub">
+                                    Hot Tub
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="coffeTeaMaker" value="true"
+                                    id="coffeTeaMaker" <%=queryStr.length !==0 && queryStr.coffeTeaMaker==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="coffeTeaMaker">
+                                    Coffe/Tea Maker
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Room
+                                Facilities</strong>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="privateBathroom" value="true"
+                                    id="privateBathroom" <%=queryStr.length !==0 && queryStr.privateBathroom==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="privateBathroom">
+                                    Private Bathroom
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="refrigerator" value="true"
+                                    id="refrigerator" <%=queryStr.length !==0 && queryStr.refrigerator==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="refrigerator">
+                                    Refrigerator
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="TV" value="true" id="TV"
+                                    <%=queryStr.length !==0 && queryStr.TV==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="TV">
+                                    TV
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="airConditioning" value="true"
+                                    id="airConditioning" <%=queryStr.length !==0 && queryStr.airConditioning==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="airConditioning">
+                                    Air Conditioning
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="balcony" value="true" id="balcony"
+                                    <%=queryStr.length !==0 && queryStr.balcony==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="balcony">
+                                    Balcony
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="towels" value="true" id="towels"
+                                    <%=queryStr.length !==0 && queryStr.towels==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="towels">
+                                    Towels
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Fun Things To
+                                Do</strong>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="biking" value="true" id="biking"
+                                    <%=queryStr.length !==0 && queryStr.biking==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="biking">
+                                    Biking
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="ATV" value="true" id="ATV"
+                                    <%=queryStr.length !==0 && queryStr.ATV==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="ATV">
+                                    ATV
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="motocross" value="true"
+                                    id="motocross" <%=queryStr.length !==0 && queryStr.motocross==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="motocross">
+                                    Motocross
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="fishing" value="true" id="fishing"
+                                    <%=queryStr.length !==0 && queryStr.fishing==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="fishing">
+                                    Fishing
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="canoeing" value="true"
+                                    id="canoeing" <%=queryStr.length !==0 && queryStr.canoeing==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="canoeing">
+                                    Canoeing
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="hiking" value="true" id="hiking"
+                                    <%=queryStr.length !==0 && queryStr.hiking==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="hiking">
+                                    Hiking
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="equestrian" value="true"
+                                    id="equestrian" <%=queryStr.length !==0 && queryStr.equestrian==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="equestrian">
+                                    Equestrian
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="climbing" value="true"
+                                    id="climbing" <%=queryStr.length !==0 && queryStr.climbing==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="climbing">
+                                    Climbing
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="rafting" value="true" id="rafting"
+                                    <%=queryStr.length !==0 && queryStr.rafting==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="rafting">
+                                    Rafting
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="walkingTours" value="true"
+                                    id="walkingTours" <%=queryStr.length !==0 && queryStr.walkingTours==="true" ? "checked" : "" %>>
+                                <label class="form-check-label" for="walkingTours">
+                                    Walking Tours
                                 </label>
                             </div>
                         </li>

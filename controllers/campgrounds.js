@@ -9,8 +9,12 @@ const geocodeService = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
+  console.log("req.query:");
   console.log(req.query);
   if (req.query.search) {
+    console.log("Intrare 1");
+    console.log("req.query.campground(search):");
+    console.log(req.query.campground);
     const campgroundsList = await Campground.find({});
 
     const fuse = new Fuse(campgroundsList, {
@@ -22,10 +26,47 @@ module.exports.index = async (req, res) => {
     const campgrounds = fuse.search(req.query.search).map((searchResult) => searchResult.item);
 
     res.render("campgrounds/index", { campgrounds });
+  } else if (Object.keys(req.query).length !== 0) {
+    console.log("Intrare 2");
+    console.log("req.query:");
+    console.log(req.query);
+    const queryStr = req.query;
+    let queryObj = JSON.stringify(req.query);
+    //price
+    queryObj = queryObj.replace(/\b(gte|lte)\b/g, (match) => `$${match}`);
+    //facilities
+    queryObj = queryObj.replace(
+      /\b(parking|wifi|petFriendly|nonStopCheckIn|nonSmokingRooms|EVChargingStation|kitchen|barbecue|campfire|swimmingPool|hotTub|coffeTeaMaker)\b/g,
+      (match) => `facilities.${match}`
+    );
+    //roomFacilities
+    queryObj = queryObj.replace(
+      /\b(privateBathroom|refrigerator|TV|airConditioning|balcony|towels)\b/g,
+      (match) => `roomFacilities.${match}`
+    );
+    //funThingsToDo
+    queryObj = queryObj.replace(
+      /\b(biking|ATV|motocross|fishing|canoeing|hiking|equestrian|climbing|rafting|walkingTours)\b/g,
+      (match) => `funThingsToDo.${match}`
+    );
+
+    const queryString = JSON.parse(queryObj);
+    console.log(queryObj);
+    console.log(queryString);
+    // console.log(await Campground.find({});
+    // const campgrounds = await Campground.find({
+    //   "facilities.parking": req.query.campground.facilities.parking,
+    // });
+    const campgrounds = await Campground.find(queryString);
+    // const campgrounds = await Campground.find().where("parking").equals("true");
+    console.log(queryStr.propertyType !== undefined)
+    res.render("campgrounds/index", { campgrounds, queryStr });
   } else {
-    const campgrounds = await Campground.find({ price: { $gte: req.query.price } });
-    res.render("campgrounds/index", { campgrounds });
-    // console.log(campgrounds);
+    console.log("Intrare 3");
+    console.log(req.query);
+    const queryStr = req.query;
+    const campgrounds = await Campground.find({});
+    res.render("campgrounds/index", { campgrounds, queryStr });
   }
 };
 
