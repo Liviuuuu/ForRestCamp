@@ -30,6 +30,7 @@ module.exports.campgroundSchema = Joi.object({
     // image: Joi.string().required(),
     description: Joi.string().required().escapeHTML(),
     location: Joi.string().required().escapeHTML(),
+    overallRating: Joi.number(),
     propertyType: Joi.string().escapeHTML(),
     facilities: Joi.object({
       parking: Joi.boolean(),
