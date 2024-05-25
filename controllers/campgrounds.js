@@ -9,6 +9,7 @@ const geocodeService = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
+  const queryStr = req.query;
   console.log("req.query:");
   console.log(req.query);
   if (req.query.search) {
@@ -18,19 +19,21 @@ module.exports.index = async (req, res) => {
     const campgroundsList = await Campground.find({});
 
     const fuse = new Fuse(campgroundsList, {
-      keys: ["title"],
+      minMatchCharLength: req.query.search.length,
+      ignoreLocation: true,
+      keys: ["title", "location"],
     });
 
     // const searchResults = fuse.search(req.query.search);
     // const campgrounds = searchResults.map((searchResult) => searchResult.item);
     const campgrounds = fuse.search(req.query.search).map((searchResult) => searchResult.item);
 
-    res.render("campgrounds/index", { campgrounds });
+    res.render("campgrounds/index", { campgrounds, queryStr });
   } else if (Object.keys(req.query).length !== 0) {
     console.log("Intrare 2");
     console.log("req.query:");
     console.log(req.query);
-    const queryStr = req.query;
+    
     let queryObj = JSON.stringify(req.query);
     //price
     queryObj = queryObj.replace(/\b(gte|lte)\b/g, (match) => `$${match}`);
@@ -64,7 +67,7 @@ module.exports.index = async (req, res) => {
   } else {
     console.log("Intrare 3");
     console.log(req.query);
-    const queryStr = req.query;
+    // const queryStr = req.query;
     const campgrounds = await Campground.find({});
     res.render("campgrounds/index", { campgrounds, queryStr });
   }

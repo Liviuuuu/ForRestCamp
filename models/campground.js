@@ -20,7 +20,7 @@ const CampgroundSchema = new Schema(
     price: Number,
     description: String,
     location: String,
-    overallRating: Number, // de calculat cand adaugi reviews
+    overallRating: Number,
     propertyType: {
       type: String,
       enum: ["Camping", "Glamping", "Chalet", "Landowner Campsites"],
@@ -60,7 +60,7 @@ const CampgroundSchema = new Schema(
       walkingTours: Boolean,
     },
     rules: {
-      //de adaugat
+      //de adaugat toate rules
       checkIn: {
         type: String,
       },

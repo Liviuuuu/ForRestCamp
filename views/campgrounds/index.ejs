@@ -22,10 +22,10 @@
                         <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Price</strong>
                             <input type="number" class="form-control form-control-sm mb-2" name="price[gte]"
                                 placeholder="Min" min="0" max="599" 
-                                value="<%= Object.keys(queryStr).length !== 0 && queryStr.price.gte > 0 ? queryStr.price.gte : "0" %>">
+                                value="<%= Object.keys(queryStr).length !== 0  && queryStr.price !== undefined  && queryStr.price.gte > 0 ? queryStr.price.gte : "0" %>">
                             <input type="number" class="form-control form-control-sm" name="price[lte]"
                                 placeholder="Max" min="1" max="600"
-                                value="<%= Object.keys(queryStr).length !== 0 && queryStr.price.lte < 600 ? queryStr.price.lte : "600" %>">
+                                value="<%= Object.keys(queryStr).length !== 0  && queryStr.price !== undefined && queryStr.price.lte < 600 ? queryStr.price.lte : "600" %>">
                         </li>
 
                         <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Property
@@ -59,29 +59,33 @@
                                 </label>
                             </div>
                         </li>
-                        <li class="list-group-item"><strong style="background-color: rgb(255, 255, 69);">Review
+                        <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Review
                                 Score</strong>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="radio" name="overallRating[gte]" value="4" id="overallRating4"
+                                    <%=Object.keys(queryStr).length !==0 && queryStr.overallRating !== undefined && queryStr.overallRating.gte === "4" ? "checked" : "" %>>
+                                <label class="form-check-label" for="overallRating4">
                                     4+
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="radio" name="overallRating[gte]" value="3" id="overallRating3"
+                                    <%=Object.keys(queryStr).length !==0 && queryStr.overallRating !== undefined && queryStr.overallRating.gt === "3" ? "checked" : "" %>>
+                                <label class="form-check-label" for="overallRating3">
                                     3+
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="radio" name="overallRating[gte]" value="2" id="overallRating2"
+                                    <%=Object.keys(queryStr).length !==0 && queryStr.overallRating !== undefined && queryStr.overallRating.gte === "2" ? "checked" : "" %>>
+                                <label class="form-check-label" for="overallRating2">
                                     2+
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="radio" name="overallRating[gte]" value="1" id="overallRating1"
+                                    <%=Object.keys(queryStr).length !==0 && queryStr.overallRating !== undefined && queryStr.overallRating.gte === "1" ? "checked" : "" %>>
+                                <label class="form-check-label" for="overallRating1">
                                     1+
                                 </label>
                             </div>
