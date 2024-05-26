@@ -1,4 +1,5 @@
 const Campground = require("../models/campground");
+const Booking = require("../models/booking");
 
 const Fuse = require("fuse.js");
 
@@ -55,7 +56,7 @@ module.exports.index = async (req, res) => {
     const queryString = JSON.parse(queryObj);
 
     let query = Campground.find(queryString);
-    
+
     //SORTING LOGIC
     if (queryStr.sort) {
       const sortBy = queryStr.sort.split(",").join(" ");
@@ -138,6 +139,37 @@ module.exports.deleteCampground = async (req, res) => {
   res.redirect("/campgrounds");
 };
 
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-}
+module.exports.renderBookingConfirmation = async (req, res) => {
+  const { id } = req.params;
+  const campground = await Campground.findById(id);
+  console.log(campground);
+  console.log(req.body);
+  console.log(req.params);
+
+  const checkIn = new Date(req.body.checkIn);
+  const checkOut = new Date(req.body.checkOut);
+  const nights = Math.abs(checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24);
+
+  const totalPrice = nights * campground.price;
+  console.log(nights);
+  req.body.nights = nights;
+  req.body.totalPrice = totalPrice;
+  console.log(req.body);
+  const requestBody = req.body;
+  res.render("campgrounds/booking", { requestBody, campground });
+};
+
+module.exports.confirmBooking = async (req, res) => {
+  const { id } = req.params;
+  const campground = await Campground.findById(id);
+
+  console.log("aici:");
+  console.log(req.body);
+  const booking = new Booking(req.body.booking);
+  booking.campground = id;
+  booking.user = req.user._id;
+  await booking.save();
+
+  req.flash("success", "Successfully booked campground!");
+  res.redirect(`/campgrounds/${campground.id}`);
+};

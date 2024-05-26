@@ -37,4 +37,8 @@ router
 
 router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(campgrounds.renderEditForm));
 
+router.post("/:id/booking2", campgrounds.confirmBooking);
+
+router.post("/:id/booking", campgrounds.renderBookingConfirmation);
+
 module.exports = router;

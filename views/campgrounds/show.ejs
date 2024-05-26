@@ -62,6 +62,22 @@
         <div class="col-6">
             <div id="map"></div>
             <% if (currentUser) {%>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/campgrounds/<%= campground._id %>/booking" method="POST" class="mb-3">
+                            <label for="checkIn">Check In</label>
+                            <input id="checkIn" name="checkIn" class="form-control" type="date" />
+                            <label for="checkOut">Check Out</label>
+                            <input id="checkOut" name="checkOut" class="form-control" type="date" />
+        
+                            <label for="persons">Persons</label>
+                            <input id="persons" name="persons" class="form-control" type="number" />
+        
+                            <button class="btn btn-outline-success">Book Now</button>
+                        </form>
+                    </div>
+                  </div>
+                
                 <h2>Leave a Review</h2>
                 <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" class="mb-3 needs-validation"
                     novalidate>

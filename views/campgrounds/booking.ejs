@@ -1,0 +1,119 @@
+<% layout("layouts/boilerplate") %>
+
+    <form action="/campgrounds/<%= campground._id %>/booking2" method="POST" class="mb-3">
+        <div class="row">
+            <div class="col-md-3 offset-1">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Your Booking Details</h4>
+                        <div class="form-floating mb-3">
+                            <input type="text" readonly class="form-control-plaintext fw-bold" id="location"
+                                value="<%= campground.title %>, <%= campground.location %>">
+                            <label for="location">
+                                <h5>Location</h5>
+                            </label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="text" readonly class="form-control-plaintext fw-bold"
+                                    name="booking[checkIn]" id="checkIn" value="<%= requestBody.checkIn %>">
+                                <label for="checkIn">
+                                    <h5>Check In</h5>
+                                </label>
+                            </div>
+                            <div class="col form-floating mb-3">
+                                <input type="text" readonly class="form-control-plaintext fw-bold"
+                                    name="booking[checkOut]" id="checkOut" value="<%= requestBody.checkOut %>">
+                                <label for="checkOut">
+                                    <h5>Check Out</h5>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col form-floating mb-3">
+                            <input type="text" readonly class="form-control-plaintext fw-bold" id="totalNights"
+                                value="<%= requestBody.nights %> nights">
+                            <label for="totalNights">
+                                <h5>Total length of stay</h5>
+                            </label>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="text" readonly class="form-control-plaintext fw-bold" id="guests"
+                                value="<%= requestBody.persons %> persons">
+                            <label for="guests">
+                                <h5>Guests</h5>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Confirm Your Details</h4>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="First name"
+                                    aria-label="First name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-primary"><strong>Your Price Summary</strong></li>
+                            <li class="list-group-item">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nights</th>
+                                            <th scope="col">Price/Night</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>
+                                                <%= requestBody.nights %>
+                                            </td>
+                                            <td>
+                                                <%= campground.price %> RON
+                                            </td>
+                                            <td>
+                                                <%= requestBody.totalPrice %> RON
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                        <div class="col form-floating mb-3">
+                            <input type="text" readonly class="form-control-plaintext fw-bold" id="guests" name="booking[totalPrice]"
+                                value="<%= requestBody.totalPrice %>">
+                            <label for="guests">
+                                <h5>Final Total Price</h5>
+                            </label>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="text" readonly class="form-control-plaintext fw-bold" id="guests" value="Cash">
+                            <label for="guests">
+                                <h5>Payment Details</h5>
+                            </label>
+                        </div>
+
+                        <div class="d-grid d-md-flex justify-content-md-end">
+                            <button class="btn btn-outline-success d-grid">Confirm Booking</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
