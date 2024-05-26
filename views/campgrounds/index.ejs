@@ -13,12 +13,23 @@
 
         <div class="col-2">
             <div class="card mb-2">
-                <div class="card-header">
-                    <strong>Filter by:</strong>
-                </div>
-
                 <form action="/campgrounds" method="GET">
+                    <div class="card-header">
+                        <strong>Sort by:</strong>
+                    </div>
                     <ul class="list-group list-group-flush">
+                        <div class="row m-1">
+                                    <select class="form-select" name="sort" aria-label="Default select example">
+                                        <option value="" selected>Relevance </option>
+                                        <option value="price" <%= Object.keys(queryStr).length !== 0  && queryStr.sort !== undefined  && queryStr.sort === "price" ? "selected" : "" %>>Price (ascending)</option>
+                                        <option value="-price" <%= Object.keys(queryStr).length !== 0  && queryStr.sort !== undefined  && queryStr.sort === "-price" ? "selected" : "" %>>Price (descending)</option>
+                                        <option value="-overallRating" <%= Object.keys(queryStr).length !== 0  && queryStr.sort !== undefined  && queryStr.sort === "-overallRating" ? "selected" : "" %>>Review Score</option>
+                                      </select>
+                        </div>
+                        <div class="card-header">
+                            <strong>Filter by:</strong>
+                        </div>
+
                         <li class="list-group-item"><strong style="background-color: rgb(20, 169, 1);">Price</strong>
                             <input type="number" class="form-control form-control-sm mb-2" name="price[gte]"
                                 placeholder="Min" min="0" max="599" 
@@ -70,7 +81,7 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="overallRating[gte]" value="3" id="overallRating3"
-                                    <%=Object.keys(queryStr).length !==0 && queryStr.overallRating !== undefined && queryStr.overallRating.gt === "3" ? "checked" : "" %>>
+                                    <%=Object.keys(queryStr).length !==0 && queryStr.overallRating !== undefined && queryStr.overallRating.gte === "3" ? "checked" : "" %>>
                                 <label class="form-check-label" for="overallRating3">
                                     3+
                                 </label>
@@ -300,7 +311,7 @@
 
                     </ul>
                     <div class="d-grid col-10 mx-auto mb-2">
-                        <button class="btn btn-outline-success btn-sm" value="Filter" type="submit">Apply filters</button>
+                        <button class="btn btn-outline-success btn-sm" value="Filter" type="submit">Apply</button>
                     </div>
                 </form>
             </div>
