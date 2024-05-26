@@ -345,6 +345,15 @@
                                             <%= campground.location %>
                                         </small>
                                     </p>
+                                <h4><span class="badge rounded-pill text-bg-info">
+                                        <%= campground.price %> RON/night
+                                    </span>
+                                    <% if (campground.overallRating) {%>
+                                        <span class="badge rounded-pill text-bg-info">
+                                            <%= campground.overallRating %>
+                                        </span>
+                                        <% } %>
+                                </h4>
                                     <a href="/campgrounds/<%= campground.id %>" class="btn btn-primary">View <%=
                                             campground.title %></a>
                                 </div>
