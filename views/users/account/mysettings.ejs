@@ -18,32 +18,33 @@
                         My Settings
                     </h1>
                     <p class="card-text">
-                        Small description
+                        Personal accounts settings
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="row mb-3">
                             <div class="col">
-                                <strong>Name</strong>
+                                <strong>Full name</strong>
                             </div>
                             <div class="col">
-                                <%= currentUser._id %>
+                                <%= currentUser.fullName %>
                             </div>
                             <div class="col d-grid d-md-flex justify-content-md-end">
                                 <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
+                                    data-bs-target="#collapseFullName" aria-expanded="false"
+                                    aria-controls="collapseFullName">
                                     Edit
                                 </button>
                             </div>
                         </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
+                        <div class="mb-3 collapse" id="collapseFullName">
+                            <form action="/mysettings/update?_method=PUT" method="POST">
+
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                    <input type="text" class="form-control" name="user[fullName]"
+                                        placeholder="Full name" aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="submit" id="button-save">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -51,28 +52,40 @@
                     <li class="list-group-item">
                         <div class="row mb-3">
                             <div class="col">
-                                <strong>Display Name</strong>
+                                <strong>Username</strong>
                             </div>
                             <div class="col">
-                                <%= currentUser._id %>
+                                <%= currentUser.username %>
                             </div>
                             <div class="col d-grid d-md-flex justify-content-md-end">
-                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    Edit
-                                </button>
                             </div>
                         </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Password</strong>
+                            </div>
+                            <div class="col">
+                                <%= currentUser.password %>
+                            </div>
+                            <div class="col d-grid d-md-flex justify-content-md-end">
+                                <!-- <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapsePassword" aria-expanded="false"
+                                    aria-controls="collapsePassword">
+                                    Edit
+                                </button> -->
+                            </div>
+                        </div>
+                        <!-- <div class="mb-3 collapse" id="collapsePassword">
+                            <form action="/mysettings/update?_method=PUT" method="POST">
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                    <input type="password" class="form-control" name="user[password]"
+                                        placeholder="Password" aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="submit" id="button-save">Save</button>
                                 </div>
                             </form>
-                        </div>
+                        </div> -->
                     </li>
                     <li class="list-group-item">
                         <div class="row mb-3">
@@ -80,22 +93,21 @@
                                 <strong>Email address</strong>
                             </div>
                             <div class="col">
-                                <%= currentUser._id %>
+                                <%= currentUser.email %>
                             </div>
                             <div class="col d-grid d-md-flex justify-content-md-end">
                                 <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
+                                    data-bs-target="#collapseEmail" aria-expanded="false" aria-controls="collapseEmail">
                                     Edit
                                 </button>
                             </div>
                         </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
+                        <div class="mb-3 collapse" id="collapseEmail">
+                            <form action="/mysettings/update?_method=PUT" method="POST">
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                    <input type="text" class="form-control" name="user[email]"
+                                        placeholder="Email address" aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="submit" id="button-save">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -106,22 +118,21 @@
                                 <strong>Phone number</strong>
                             </div>
                             <div class="col">
-                                <%= currentUser._id %>
+                                <%= currentUser.phone %>
                             </div>
                             <div class="col d-grid d-md-flex justify-content-md-end">
                                 <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
+                                    data-bs-target="#collapsePhone" aria-expanded="false" aria-controls="collapsePhone">
                                     Edit
                                 </button>
                             </div>
                         </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
+                        <div class="mb-3 collapse" id="collapsePhone">
+                            <form action="/mysettings/update?_method=PUT" method="POST">
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                    <input type="text" class="form-control" name="user[phone]"
+                                        placeholder="Phone number" aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="submit" id="button-save">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -132,100 +143,22 @@
                                 <strong>Date of birth</strong>
                             </div>
                             <div class="col">
-                                <%= currentUser._id %>
+                                <%= currentUser.birthday %>
                             </div>
                             <div class="col d-grid d-md-flex justify-content-md-end">
                                 <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
+                                    data-bs-target="#collapseBirthday" aria-expanded="false"
+                                    aria-controls="collapseBirthday">
                                     Edit
                                 </button>
                             </div>
                         </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
+                        <div class="mb-3 collapse" id="collapseBirthday">
+                            <form action="/mysettings/update?_method=PUT" method="POST">
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <strong>Nationality</strong>
-                            </div>
-                            <div class="col">
-                                <%= currentUser._id %>
-                            </div>
-                            <div class="col d-grid d-md-flex justify-content-md-end">
-                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <strong>Gender</strong>
-                            </div>
-                            <div class="col">
-                                <%= currentUser._id %>
-                            </div>
-                            <div class="col d-grid d-md-flex justify-content-md-end">
-                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <strong>Address</strong>
-                            </div>
-                            <div class="col">
-                                <%= currentUser._id %>
-                            </div>
-                            <div class="col d-grid d-md-flex justify-content-md-end">
-                                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                        <div class="mb-3 collapse" id="collapseExample">
-                            <form action="#" method="">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        aria-describedby="button-save">
-                                    <button class="btn btn-outline-success" type="button" id="button-save">Save</button>
+                                    <input type="date" class="form-control" name="user[birthday]"
+                                        placeholder="Date of birth" aria-describedby="button-save">
+                                    <button class="btn btn-outline-success" type="submit" id="button-save">Save</button>
                                 </div>
                             </form>
                         </div>

@@ -7,8 +7,8 @@ module.exports.renderRegister = (req, res) => {
 
 module.exports.register = async (req, res, next) => {
   try {
-    const { email, username, password } = req.body;
-    const user = new User({ email, username });
+    const { email, username, fullName, password } = req.body;
+    const user = new User({ email, username, fullName });
     const registeredUser = await User.register(user, password);
     req.login(registeredUser, (err) => {
       if (err) return next(err);
@@ -42,12 +42,34 @@ module.exports.logout = (req, res) => {
   });
 };
 
+module.exports.renderMySettings = async (req, res) => {
+  // console.log(req.user);
+  res.render("users/account/mysettings");
+};
+
+module.exports.updateMySettings = async (req, res) => {
+  const { id } = req.user;
+  const user = await User.findByIdAndUpdate(id, { ...req.body.user });
+  user.save();
+
+  req.flash("success", "Your settings were updated succcesfully!");
+  res.redirect("/mysettings");
+};
+
+module.exports.renderMyTrips = (req, res) => {
+  res.render("users/account/mytrips");
+};
+
 module.exports.renderMyReviews = async (req, res) => {
-  const reviews = await Review.find({author: req.user._id}).populate("campground", "title");
+  const reviews = await Review.find({ author: req.user._id }).populate("campground", "title");
   res.render("users/account/myreviews", { reviews });
 };
 
 module.exports.deleteMyReview = async (req, res) => {
-  const reviews = await Review.find({author: req.user._id}).populate("campground", "title");
+  const reviews = await Review.find({ author: req.user._id }).populate("campground", "title");
   res.render("users/account/myreviews", { reviews });
+};
+
+module.exports.renderMyWishlist = (req, res) => {
+  res.render("users/account/mywishlist");
 };

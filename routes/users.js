@@ -21,20 +21,14 @@ router
 
 router.get("/logout", users.logout);
 
-router.get("/mysettings", (req, res) => {
-  // console.log(currentUser);
-  res.render("users/account/mysettings");
-});
+router.get("/mysettings", catchAsync(users.renderMySettings));
+router.put("/mysettings/update", catchAsync(users.updateMySettings));
 
-router.get("/mytrips", (req, res) => {
-  res.render("users/account/mytrips");
-});
+router.get("/mytrips", users.renderMyTrips);
 
 router.get("/myreviews", catchAsync(users.renderMyReviews));
 
-router.get("/mywishlist", (req, res) => {
-  res.render("users/account/mywishlist");
-});
+router.get("/mywishlist", users.renderMyWishlist);
 
 //Admin
 router.get("/admin", (req, res) => {

@@ -8,6 +8,12 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  fullName: {
+    type: String,
+    // required: true,
+  },
+  phone: String,
+  birthday: Date,
   isAdmin: {
     type: Boolean,
     default: false,
