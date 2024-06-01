@@ -1,0 +1,49 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="row">
+            <div class="col-md-3 offset-md-1">
+                <ul class="list-group list-group-flush">
+                    <a href="/mysettings" class="list-group-item list-group-item-action">Manage Account</a>
+                    <a href="/mybookings" class="list-group-item list-group-item-action active"
+                        aria-current="true">Bookings & Trips</a>
+                    <a href="/myreviews" class="list-group-item list-group-item-action">Reviews</a>
+                    <a href="/mywishlist" class="list-group-item list-group-item-action">Saved</a>
+                </ul>
+            </div>
+
+            <div class="card mb-3 col-md-6">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        My Bookings and Trips
+                    </h1>
+                    <p class="card-text">
+                        Small description
+                    </p>
+                </div>
+                <% for(let booking of bookings) {%>
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4 pb-2 pt-2 ps-2">
+                                <img crossorigin="anonymous"
+                                    src="https://res.cloudinary.com/ddfogyd0b/image/upload/v1715113305/ForRestCamp/zv22lrf9t7p0vleaxnta.jpg"
+                                    class="rounded img-fluid border border-black" alt="..."
+                                    style="--bs-border-opacity: .15;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    
+                                    <h5><%= booking.campground.title %></h5>
+                                    <h5><%= booking.user.username %></h5>
+                                    <h5><%= booking.totalPrice %></h5>
+                                    <h5><%= booking.checkIn %></h5>
+                                    <h5><%= booking.checkOut %></h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </body>

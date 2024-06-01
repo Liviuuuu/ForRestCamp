@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Review = require("../models/review");
+const Booking = require("../models/booking");
 
 module.exports.renderRegister = (req, res) => {
   res.render("users/register");
@@ -56,8 +57,9 @@ module.exports.updateMySettings = async (req, res) => {
   res.redirect("/mysettings");
 };
 
-module.exports.renderMyTrips = (req, res) => {
-  res.render("users/account/mytrips");
+module.exports.renderMyBookings = async (req, res) => {
+  const bookings = await Booking.find({ user: req.user._id }).populate("campground", "title").populate("user", "username");
+  res.render("users/account/mybookings", {bookings});
 };
 
 module.exports.renderMyReviews = async (req, res) => {

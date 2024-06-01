@@ -24,7 +24,7 @@ router.get("/logout", users.logout);
 router.get("/mysettings", catchAsync(users.renderMySettings));
 router.put("/mysettings/update", catchAsync(users.updateMySettings));
 
-router.get("/mytrips", users.renderMyTrips);
+router.get("/mybookings", users.renderMyBookings);
 
 router.get("/myreviews", catchAsync(users.renderMyReviews));
 

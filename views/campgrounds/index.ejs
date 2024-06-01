@@ -1,16 +1,27 @@
 <% layout("layouts/boilerplate") %>
     <div id="cluster-map"></div>
-    <form action="/campgrounds" method="GET" class="form-inline">
-        <div class="form-group">
-            <input type="text" name="search" placeholder="Campground search..." class="form-control">
-            <button class="btn btn-outline-success" value="Search" type="submit">Search</button>
-        </div>
-    </form>
 
     <div class="row">
-        <h1>All Campgrounds</h1>
-        <div><a href="/campgrounds/new">Add Campground</a></div>
+        <div class="row">
+            <div class="col-4">
+                <h1>All Campgrounds</h1>
+            </div>
+            <div class="col-8">
+                <div class="row d-flex flex-row">
+                    <form action="/campgrounds" method="GET">
+        
+                        <div class="">
+                            <input type="text" name="search" placeholder="Campground search..." class="form-control">
+                        </div>
+                        <div class="">
+                            <button class="btn btn-outline-success" value="Search" type="submit">Search</button>
+                        </div>
 
+                    </form>
+                </div>
+            </div>
+        </div>
+        
         <div class="col-2">
             <div class="card mb-2">
                 <form action="/campgrounds" method="GET">
@@ -332,30 +343,39 @@
                                             alt="">
                                         <% } %>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 d-flex">
                                 <div class="card-body">
-                                    <h5 class="card-title">
+                                    <h4 class="card-title">
                                         <%= campground.title %>
-                                    </h5>
+                                        <% if (campground.overallRating) {%>
+                                            <span class="badge rounded-pill text-bg-primary">
+                                                <%= campground.overallRating %>
+                                            </span>
+                                            <% } %>
+                                    </h4>
                                     <p class="card-text">
-                                        <%= campground.description %>
+                                        <%= campground.description.substring(0, 160) + "..." %>
                                     </p>
                                     <p class="card-text">
                                         <small class="text-body-secondary">
                                             <%= campground.location %>
                                         </small>
                                     </p>
-                                <h4><span class="badge rounded-pill text-bg-info">
-                                        <%= campground.price %> RON/night
-                                    </span>
-                                    <% if (campground.overallRating) {%>
-                                        <span class="badge rounded-pill text-bg-info">
-                                            <%= campground.overallRating %>
-                                        </span>
-                                        <% } %>
-                                </h4>
-                                    <a href="/campgrounds/<%= campground.id %>" class="btn btn-primary">View <%=
-                                            campground.title %></a>
+                                    <div class="row">
+                                        <div class="col align-self-end">
+                                            <h4 class="mb-0"><span class="badge rounded-pill text-bg-light" style="border-style: solid;">
+                                                    <%= campground.price %> RON/night
+                                                </span>
+                                            </h4>
+                                        </div>
+                                        <div class="col align-self-end">
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    
+                                                <a href="/campgrounds/<%= campground.id %>" class="btn btn-primary">View <%= campground.title %></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
